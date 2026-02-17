@@ -5,10 +5,24 @@
 --}}
 <header
     x-data="{ scrolled: false, mobileOpen: false }"
-    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
-    :class="scrolled ? 'bg-hilotec-dark/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'"
+    x-init="scrolled = window.scrollY > 50; window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
+    :class="mobileOpen ? 'bg-hilotec-dark shadow-lg border-b border-white/5' : (scrolled ? 'bg-hilotec-dark/95 backdrop-blur-sm shadow-lg' : 'bg-transparent')"
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
+    {{-- Mobile backdrop — closes menu on tap outside --}}
+    <div
+        x-show="mobileOpen"
+        x-cloak
+        @click="mobileOpen = false"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="md:hidden fixed inset-0 bg-black/30 -z-10"
+    ></div>
+
     <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             {{-- Logo --}}

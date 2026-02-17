@@ -26,7 +26,7 @@
 >
     <div class="absolute inset-0 bg-hilotec-dark/50"></div>
 
-    <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full {{ $fullHeight ? 'py-32' : '' }}">
+    <div class="relative max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 w-full {{ $fullHeight ? 'py-32' : '' }}">
         <div class="{{ $centered ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl' }}">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold {{ $fullHeight ? 'italic' : '' }} text-white leading-tight mb-4">
                 {{ $heading }}
