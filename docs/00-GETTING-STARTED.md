@@ -278,7 +278,7 @@ On Ubuntu, you can install a newer PHP via the `ppa:ondrej/php` repository. On m
 
 ## What's Next
 
-- **[ADMIN_GUIDE.md](ADMIN_GUIDE.md)** -- How to manage website content through the admin panel
-- **[TECHNICAL.md](TECHNICAL.md)** -- Architecture, database schema, and code conventions
-- **[DESIGN_SYSTEM.md](DESIGN_SYSTEM.md)** -- Tailwind theme tokens, Blade components, and design patterns
-- **[DEPLOYMENT.md](DEPLOYMENT.md)** -- Production deployment instructions
+- **[03-ADMIN-GUIDE.md](03-ADMIN-GUIDE.md)** -- How to manage website content through the admin panel
+- **[04-TECHNICAL.md](04-TECHNICAL.md)** -- Architecture, database schema, and code conventions
+- **[05-DESIGN-SYSTEM.md](05-DESIGN-SYSTEM.md)** -- Tailwind theme tokens, Blade components, and design patterns
+- **[02-DEPLOYMENT.md](02-DEPLOYMENT.md)** -- Production deployment instructions

@@ -6,7 +6,7 @@ Corporate website for [HILOTEC Engineering + Consulting AG](https://www.hilotec.
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
-| Backend | Laravel | 11 |
+| Backend | Laravel | 12 |
 | Admin CMS | Filament | 3 |
 | Styling | Tailwind CSS | 4 |
 | Interactivity | Alpine.js | 3 |
