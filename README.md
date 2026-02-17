@@ -47,20 +47,25 @@ Open http://localhost:8000 in your browser.
 | Email | `admin@hilotec.com` |
 | Password | `password` |
 
-See [docs/ADMIN_GUIDE.md](docs/ADMIN_GUIDE.md) for the full client-facing admin manual.
+See [docs/03-ADMIN-GUIDE.md](docs/03-ADMIN-GUIDE.md) for the full admin manual.
 
 ## Documentation
 
+Complete handover documentation is in the [`docs/`](docs/) directory. See [docs/README.md](docs/README.md) for the full index.
+
 | Document | Audience | Description |
 |----------|----------|-------------|
-| [README.md](README.md) | Developers | This file — project overview and quick start |
-| [docs/TECHNICAL.md](docs/TECHNICAL.md) | Developers | Architecture, database schema, code patterns |
-| [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) | Developers | Colors, fonts, Blade components, usage examples |
-| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | DevOps / Developers | Production deployment, server config, environment |
-| [docs/ADMIN_GUIDE.md](docs/ADMIN_GUIDE.md) | Client / Content Editors | How to use the admin panel to manage content |
-| [CLAUDE.md](CLAUDE.md) | AI Assistants | Context for Claude Code / AI-assisted development |
-| [DECISIONS.md](DECISIONS.md) | Developers | Log of architectural decisions with rationale |
-| [PROGRESS.md](PROGRESS.md) | Developers | Build progress tracker |
+| [00-GETTING-STARTED.md](docs/00-GETTING-STARTED.md) | Everyone | Quick start in 10 steps |
+| [01-DEVELOPMENT-SETUP.md](docs/01-DEVELOPMENT-SETUP.md) | Developers | IDE, tooling, dev workflow |
+| [02-DEPLOYMENT.md](docs/02-DEPLOYMENT.md) | DevOps | Production server setup, SSL, deploy scripts |
+| [03-ADMIN-GUIDE.md](docs/03-ADMIN-GUIDE.md) | Content Editors | Admin panel usage for all content types |
+| [04-TECHNICAL.md](docs/04-TECHNICAL.md) | Developers | Architecture, models, controllers, patterns |
+| [05-DESIGN-SYSTEM.md](docs/05-DESIGN-SYSTEM.md) | Developers | Colors, fonts, Blade components |
+| [06-SEO.md](docs/06-SEO.md) | Marketing / DevOps | SEO setup, structured data, analytics |
+| [07-MAINTENANCE.md](docs/07-MAINTENANCE.md) | DevOps | Routine maintenance, updates, monitoring |
+| [08-BACKUP-RECOVERY.md](docs/08-BACKUP-RECOVERY.md) | DevOps | Backup strategies, disaster recovery |
+| [09-SECURITY.md](docs/09-SECURITY.md) | DevOps / Developers | Security architecture, hardening, incident response |
+| [10-BRANCH-COMPARISON.md](docs/10-BRANCH-COMPARISON.md) | Developers | master vs design-v2 branch differences |
 
 ## Development
 
@@ -86,14 +91,17 @@ npm run build                 # Production asset build
 ```
 hilotec/
 ├── app/
+│   ├── Console/Commands/     # Artisan commands (SecurityAudit)
 │   ├── Filament/             # Admin panel (resources, pages)
-│   ├── Http/Controllers/     # Frontend controllers
+│   ├── Http/
+│   │   ├── Controllers/      # Frontend controllers
+│   │   └── Middleware/        # SecurityHeaders, ThrottleAdminLogin
 │   ├── Models/               # Eloquent models
 │   └── helpers.php           # Global setting() helper
 ├── database/
 │   ├── migrations/           # Schema definitions
 │   └── seeders/              # Content data
-├── docs/                     # Documentation
+├── docs/                     # Handover documentation (11 guides)
 ├── public/images/            # Static assets
 ├── resources/
 │   ├── css/app.css           # Tailwind config + design tokens
