@@ -1,18 +1,30 @@
 # HILOTEC Engineering + Consulting AG — Website
 
-Corporate website for [HILOTEC Engineering + Consulting AG](https://www.hilotec.com), a Swiss IT services company based in Langnau im Emmental. Built with Laravel 11, Filament 3, Tailwind CSS 4, and Alpine.js.
+Corporate website for [HILOTEC Engineering + Consulting AG](https://www.hilotec.com), a Swiss IT services company for SMEs (KMU), based in Langnau im Emmental.
+
+## Tech Stack
+
+| Layer | Technology | Version |
+|-------|-----------|---------|
+| Backend | Laravel | 11 |
+| Admin CMS | Filament | 3 |
+| Styling | Tailwind CSS | 4 |
+| Interactivity | Alpine.js | 3 |
+| Database | SQLite (local) / MySQL (production) | — |
+| Fonts | Google Fonts (Sora + DM Sans) | — |
+| Build Tool | Vite | 7 |
 
 ## Requirements
 
-- PHP 8.2+
-- Composer
+- PHP 8.2+ with extensions: `pdo_sqlite`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`
+- Composer 2.x
 - Node.js 18+ & npm
-- SQLite (included with PHP by default)
+- SQLite 3 (included with PHP by default)
 
-## Setup
+## Quick Start
 
 ```bash
-git clone <repo-url> hilotec
+git clone https://github.com/bicibg/hilotec.git
 cd hilotec
 cp .env.example .env
 touch database/database.sqlite
@@ -24,93 +36,90 @@ npm run build
 php artisan serve
 ```
 
-Visit http://localhost:8000 to see the website.
+Open http://localhost:8000 in your browser.
 
 ## Admin Panel
 
-URL: http://localhost:8000/admin
+**URL:** http://localhost:8000/admin
 
-Default credentials:
-- Email: `admin@hilotec.com`
-- Password: `password`
+| | |
+|---|---|
+| Email | `admin@hilotec.com` |
+| Password | `password` |
 
-The admin panel (Filament 3) allows managing:
-- Services (IT offerings)
-- Reference categories and references (client list)
-- Team members
-- Blog posts
-- Static pages (Impressum, Datenschutz, etc.)
-- Site-wide settings (contact info, footer, social links)
-- Contact form submissions
+See [docs/ADMIN_GUIDE.md](docs/ADMIN_GUIDE.md) for the full client-facing admin manual.
 
-## Architecture
+## Documentation
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | Laravel 11 |
-| Admin CMS | Filament 3 |
-| Frontend | Blade templates |
-| Styling | Tailwind CSS 4 |
-| Interactivity | Alpine.js |
-| Database | SQLite (local) |
-| Fonts | Google Fonts (Sora + DM Sans) |
-| Build | Vite |
-
-### Key Directories
-
-```
-app/
-├── Models/              Eloquent models
-├── Http/Controllers/    Frontend controllers
-├── Filament/
-│   ├── Resources/       CRUD admin resources
-│   └── Pages/           Custom admin pages (Settings)
-├── helpers.php          Global setting() helper
-
-resources/views/
-├── components/          Blade components (design system)
-├── pages/               Page templates
-├── errors/              Error pages (404)
-└── filament/            Filament custom views
-
-database/
-├── migrations/          Schema definitions
-└── seeders/             Content data
-
-public/images/           Static assets
-├── heroes/              Hero background images
-├── backgrounds/         Section backgrounds
-├── icons/               Service SVG icons
-├── branding/            Logo, swoosh, TeamViewer badge
-└── meta/                Favicons, OG image
-```
+| Document | Audience | Description |
+|----------|----------|-------------|
+| [README.md](README.md) | Developers | This file — project overview and quick start |
+| [docs/TECHNICAL.md](docs/TECHNICAL.md) | Developers | Architecture, database schema, code patterns |
+| [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) | Developers | Colors, fonts, Blade components, usage examples |
+| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | DevOps / Developers | Production deployment, server config, environment |
+| [docs/ADMIN_GUIDE.md](docs/ADMIN_GUIDE.md) | Client / Content Editors | How to use the admin panel to manage content |
+| [CLAUDE.md](CLAUDE.md) | AI Assistants | Context for Claude Code / AI-assisted development |
+| [DECISIONS.md](DECISIONS.md) | Developers | Log of architectural decisions with rationale |
+| [PROGRESS.md](PROGRESS.md) | Developers | Build progress tracker |
 
 ## Development
 
 ```bash
-# Start dev server with hot reload
-npm run dev &
-php artisan serve
+# Hot-reload development (two terminals)
+npm run dev          # Terminal 1: Vite dev server
+php artisan serve    # Terminal 2: Laravel server
 
-# Or use the built-in composer dev script
+# Or single command with concurrently
 composer dev
+```
+
+### Common Commands
+
+```bash
+php artisan migrate --seed    # Reset database with fresh content
+php artisan cache:clear       # Clear all caches (including settings)
+npm run build                 # Production asset build
+```
+
+## Project Structure
+
+```
+hilotec/
+├── app/
+│   ├── Filament/             # Admin panel (resources, pages)
+│   ├── Http/Controllers/     # Frontend controllers
+│   ├── Models/               # Eloquent models
+│   └── helpers.php           # Global setting() helper
+├── database/
+│   ├── migrations/           # Schema definitions
+│   └── seeders/              # Content data
+├── docs/                     # Documentation
+├── public/images/            # Static assets
+├── resources/
+│   ├── css/app.css           # Tailwind config + design tokens
+│   ├── js/app.js             # Alpine.js setup
+│   └── views/
+│       ├── components/       # Reusable Blade components
+│       ├── pages/            # Page templates
+│       └── errors/           # Error pages
+└── routes/web.php            # All public routes
 ```
 
 ## Pages
 
-| Route | Page |
-|-------|------|
-| `/` | Home |
-| `/angebot` | Services overview |
-| `/angebot/{slug}` | Service detail |
-| `/referenzen` | References (client list) |
-| `/ueber-uns` | About us |
-| `/aktuelles` | Blog listing |
-| `/aktuelles/{slug}` | Blog post |
-| `/kontakt` | Contact form |
-| `/impressum` | Legal notice |
-| `/datenschutz` | Privacy policy |
-| `/admin` | Admin panel |
+| Route | Page | Controller |
+|-------|------|------------|
+| `/` | Home | `HomeController` |
+| `/angebot` | Services listing | `ServiceController@index` |
+| `/angebot/{slug}` | Service detail | `ServiceController@show` |
+| `/referenzen` | References by category | `ReferenceController@index` |
+| `/ueber-uns` | About us | `AboutController@index` |
+| `/aktuelles` | Blog listing | `PostController@index` |
+| `/aktuelles/{slug}` | Blog post detail | `PostController@show` |
+| `/kontakt` | Contact form | `ContactController` |
+| `/impressum` | Legal notice | `PageController@show` |
+| `/datenschutz` | Privacy policy | `PageController@show` |
+| `/admin` | Admin panel | Filament |
 
 ## License
 
