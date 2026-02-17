@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@plugin '@tailwindcss/typography';
+
+@theme {
+    /* Colors */
+    --color-hilotec-dark: #0a0a0a;
+    --color-hilotec-darker: #050505;
+    --color-hilotec-surface: #111318;
+    --color-hilotec-gold: #d4a843;
+    --color-hilotec-gold-dark: #b8922e;
+    --color-hilotec-gold-light: #e4be5a;
+    --color-hilotec-blue: #2563eb;
+    --color-hilotec-blue-dark: #1d4ed8;
+    --color-hilotec-gray: #9ca3af;
+    --color-hilotec-gray-light: #d1d5db;
+    --color-hilotec-gray-dark: #4b5563;
+
+    /* Font families */
+    --font-heading: 'Sora', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+    /* Max widths */
+    --container-content: 1280px;
+}
+
+/* Base styles */
+@layer base {
+    body {
+        @apply font-body bg-hilotec-dark text-white antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+    }
+}
