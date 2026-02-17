@@ -12,12 +12,7 @@
     <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center gap-3 relative">
-                <img
-                    src="{{ asset('images/branding/logo_swoosh.svg') }}"
-                    alt=""
-                    class="absolute -left-12 -top-2 h-16 w-auto opacity-80 pointer-events-none hidden lg:block"
-                >
+            <a href="{{ route('home') }}">
                 <img
                     src="{{ asset('images/branding/logo.png') }}"
                     alt="{{ setting('general.company_name') }}"
