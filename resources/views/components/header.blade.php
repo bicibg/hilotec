@@ -1,12 +1,13 @@
 {{--
     Site Header Component
-    Sticky header with transparent-to-solid transition on scroll.
+    Sticky header with glassmorphic transition on scroll.
     Logo left, navigation right. Mobile hamburger menu.
+    Gold underline on active nav item.
 --}}
 <header
     x-data="{ scrolled: false, mobileOpen: false }"
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
-    :class="scrolled ? 'bg-hilotec-dark/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'"
+    :class="scrolled ? 'glass shadow-lg border-b border-white/5' : 'bg-transparent'"
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
     <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +44,7 @@
                     >
                         {{ $item['label'] }}
                         @if($isActive)
-                            <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-hilotec-gold rounded-full"></span>
+                            <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-hilotec-gold rounded-full"></span>
                         @endif
                     </a>
                 @endforeach
@@ -83,7 +84,7 @@
                 @endphp
                 <a
                     href="{{ $item['url'] }}"
-                    class="block py-3 px-4 text-sm font-medium {{ $isActive ? 'text-hilotec-gold' : 'text-white hover:text-hilotec-gold' }}"
+                    class="block py-3 px-4 text-sm font-medium {{ $isActive ? 'text-hilotec-gold border-l-2 border-hilotec-gold' : 'text-white hover:text-hilotec-gold' }}"
                 >
                     {{ $item['label'] }}
                 </a>

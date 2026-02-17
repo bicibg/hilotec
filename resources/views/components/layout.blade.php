@@ -5,9 +5,8 @@
     - title (string, optional) — Page title suffix after company name
     - metaDescription (string, optional) — Meta description for SEO
     - metaImage (string, optional) — OG image path
-    - fullHero (bool, optional) — Whether the page has a full-height hero (affects header style)
 --}}
-@props(['title' => null, 'metaDescription' => null, 'metaImage' => null, 'fullHero' => false])
+@props(['title' => null, 'metaDescription' => null, 'metaImage' => null])
 
 <!DOCTYPE html>
 <html lang="de">

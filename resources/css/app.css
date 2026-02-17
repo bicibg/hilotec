@@ -8,18 +8,41 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-    /* Colors */
-    --color-hilotec-dark: #0a0a0a;
-    --color-hilotec-darker: #050505;
-    --color-hilotec-surface: #111318;
+    /* === Alpine Precision Color Palette === */
+
+    /* Dark tones — hero, footer, CTA sections */
+    --color-hilotec-dark: #0C1222;
+    --color-hilotec-darker: #080E1A;
+    --color-hilotec-surface: #111827;
+
+    /* Light tones — content sections */
+    --color-hilotec-light: #FAFAFA;
+    --color-hilotec-light-alt: #F3F4F6;
+    --color-hilotec-white: #FFFFFF;
+
+    /* Gold accent */
     --color-hilotec-gold: #d4a843;
     --color-hilotec-gold-dark: #b8922e;
     --color-hilotec-gold-light: #e4be5a;
+
+    /* Blue CTA */
     --color-hilotec-blue: #2563eb;
     --color-hilotec-blue-dark: #1d4ed8;
+    --color-hilotec-blue-light: #3b82f6;
+
+    /* Text colors */
+    --color-hilotec-text: #1F2937;
+    --color-hilotec-text-light: #6B7280;
+    --color-hilotec-text-muted: #9CA3AF;
+
+    /* Legacy gray aliases */
     --color-hilotec-gray: #9ca3af;
     --color-hilotec-gray-light: #d1d5db;
     --color-hilotec-gray-dark: #4b5563;
+
+    /* Border */
+    --color-hilotec-border: #E5E7EB;
+    --color-hilotec-border-dark: #1E293B;
 
     /* Font families */
     --font-heading: 'Sora', ui-sans-serif, system-ui, sans-serif;
@@ -32,10 +55,103 @@
 /* Base styles */
 @layer base {
     body {
-        @apply font-body bg-hilotec-dark text-white antialiased;
+        @apply font-body bg-hilotec-light text-hilotec-text antialiased;
     }
 
     h1, h2, h3, h4, h5, h6 {
         @apply font-heading;
+    }
+}
+
+/* === Utility Classes === */
+@layer utilities {
+    /* Glassmorphism */
+    .glass {
+        background: rgba(12, 18, 34, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .glass-light {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Scroll reveal — elements start invisible, JS adds .revealed */
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stagger delays for child elements */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+    .stagger-7 { transition-delay: 0.7s; }
+    .stagger-8 { transition-delay: 0.8s; }
+
+    /* Gold accent bar */
+    .gold-bar-left {
+        position: relative;
+    }
+    .gold-bar-left::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, #d4a843, #e4be5a);
+        border-radius: 2px;
+    }
+
+    /* Glow effect for buttons */
+    .glow-blue {
+        box-shadow: 0 4px 24px rgba(37, 99, 235, 0.3);
+    }
+    .glow-blue:hover {
+        box-shadow: 0 8px 32px rgba(37, 99, 235, 0.45);
+    }
+    .glow-gold {
+        box-shadow: 0 4px 24px rgba(212, 168, 67, 0.25);
+    }
+    .glow-gold:hover {
+        box-shadow: 0 8px 32px rgba(212, 168, 67, 0.4);
+    }
+
+    /* Card elevation */
+    .card-elevated {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .card-elevated:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+    }
+}
+
+/* === Prose overrides for light background === */
+@layer components {
+    .prose-light {
+        --tw-prose-body: #374151;
+        --tw-prose-headings: #111827;
+        --tw-prose-links: #2563eb;
+        --tw-prose-bold: #111827;
+        --tw-prose-counters: #6B7280;
+        --tw-prose-bullets: #d4a843;
+        --tw-prose-hr: #E5E7EB;
+        --tw-prose-quotes: #111827;
+        --tw-prose-quote-borders: #d4a843;
+        --tw-prose-code: #111827;
+        --tw-prose-pre-code: #E5E7EB;
+        --tw-prose-pre-bg: #0C1222;
     }
 }
