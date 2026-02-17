@@ -34,7 +34,7 @@
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
     @endif
 
-    <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full {{ $fullHeight ? 'py-32' : '' }}">
+    <div class="relative max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 w-full {{ $fullHeight ? 'py-32' : '' }}">
         <div class="{{ $centered ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl' }}">
             @if($badge)
                 <div class="reveal stagger-1 mb-6">
@@ -87,7 +87,7 @@
     {{-- SVG wave divider at bottom --}}
     <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
         <svg class="relative block w-full h-12 md:h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6.01,68.2-17.3,103.6-29.44,38.4-13.17,79.2-22.24,120-17.35,18.3,2.19,35.55,7.02,52.6,13.16,10.15,3.66,20.1,7.97,30.4,11.5V120H0Z" class="fill-hilotec-light"></path>
+            <path d="M0,60 C150,90 350,30 600,60 C850,90 1050,30 1200,60 L1200,120 L0,120 Z" class="fill-hilotec-light"></path>
         </svg>
     </div>
 </section>
