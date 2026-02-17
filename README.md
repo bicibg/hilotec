@@ -129,6 +129,15 @@ hilotec/
 | `/datenschutz` | Privacy policy | `PageController@show` |
 | `/admin` | Admin panel | Filament |
 
+## Branches
+
+| Branch | Description |
+|--------|-------------|
+| `master` | Dark theme + full security hardening (production) |
+| `design-v2` | Alpine Precision light/dark hybrid theme (no security hardening yet) |
+
+See [docs/10-BRANCH-COMPARISON.md](docs/10-BRANCH-COMPARISON.md) for detailed differences and merge instructions.
+
 ## License
 
 Proprietary — HILOTEC Engineering + Consulting AG
