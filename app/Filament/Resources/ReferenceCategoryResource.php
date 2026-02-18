@@ -2,10 +2,18 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\ReferenceCategoryResource\Pages\ListReferenceCategories;
+use App\Filament\Resources\ReferenceCategoryResource\Pages\CreateReferenceCategory;
+use App\Filament\Resources\ReferenceCategoryResource\Pages\EditReferenceCategory;
 use App\Filament\Resources\ReferenceCategoryResource\Pages;
 use App\Models\ReferenceCategory;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -13,17 +21,17 @@ use Filament\Tables\Table;
 class ReferenceCategoryResource extends Resource
 {
     protected static ?string $model = ReferenceCategory::class;
-    protected static ?string $navigationIcon = 'heroicon-o-folder';
-    protected static ?string $navigationGroup = 'Referenzen';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-folder';
+    protected static string | \UnitEnum | null $navigationGroup = 'Referenzen';
     protected static ?int $navigationSort = 1;
     protected static ?string $navigationLabel = 'Kategorien';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
-            Forms\Components\TextInput::make('name')->required()->maxLength(255),
-            Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
+        return $schema->components([
+            TextInput::make('name')->required()->maxLength(255),
+            TextInput::make('slug')->required()->unique(ignoreRecord: true),
+            TextInput::make('sort_order')->numeric()->default(0),
         ]);
     }
 
@@ -31,22 +39,22 @@ class ReferenceCategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('references_count')->counts('references')->label('Referenzen'),
-                Tables\Columns\TextColumn::make('sort_order')->sortable(),
+                TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('references_count')->counts('references')->label('Referenzen'),
+                TextColumn::make('sort_order')->sortable(),
             ])
             ->defaultSort('sort_order')
             ->reorderable('sort_order')
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make()])]);
+            ->recordActions([EditAction::make()])
+            ->toolbarActions([BulkActionGroup::make([DeleteBulkAction::make()])]);
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListReferenceCategories::route('/'),
-            'create' => Pages\CreateReferenceCategory::route('/create'),
-            'edit' => Pages\EditReferenceCategory::route('/{record}/edit'),
+            'index' => ListReferenceCategories::route('/'),
+            'create' => CreateReferenceCategory::route('/create'),
+            'edit' => EditReferenceCategory::route('/{record}/edit'),
         ];
     }
 }
