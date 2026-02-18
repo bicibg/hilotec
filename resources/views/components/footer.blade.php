@@ -81,7 +81,7 @@
 
         {{-- Copyright Bar --}}
         <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-hilotec-gray-dark text-xs">{{ setting('footer.copyright_text') }}</p>
+            <p class="text-hilotec-gray-dark text-xs">&copy;2026 HILOTEC Engineering + Consulting AG | Website by Bugra Ergin</p>
             <div class="flex items-center gap-4">
                 <a href="/impressum" class="text-hilotec-gray-dark text-xs hover:text-white transition-colors">Impressum</a>
                 <a href="/datenschutz" class="text-hilotec-gray-dark text-xs hover:text-white transition-colors">Datenschutz</a>
