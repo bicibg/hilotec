@@ -2,10 +2,24 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\PostResource\Pages\ListPosts;
+use App\Filament\Resources\PostResource\Pages\CreatePost;
+use App\Filament\Resources\PostResource\Pages\EditPost;
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -13,21 +27,21 @@ use Filament\Tables\Table;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
-    protected static ?string $navigationGroup = 'Inhalte';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-newspaper';
+    protected static string | \UnitEnum | null $navigationGroup = 'Inhalte';
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationLabel = 'Beiträge';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
-            Forms\Components\TextInput::make('title')->required()->maxLength(255),
-            Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            Forms\Components\Textarea::make('excerpt')->rows(3),
-            Forms\Components\RichEditor::make('body')->columnSpanFull(),
-            Forms\Components\FileUpload::make('featured_image')->image()->directory('posts'),
-            Forms\Components\DateTimePicker::make('published_at'),
-            Forms\Components\Toggle::make('is_published')->default(true),
+        return $schema->components([
+            TextInput::make('title')->required()->maxLength(255),
+            TextInput::make('slug')->required()->unique(ignoreRecord: true),
+            Textarea::make('excerpt')->rows(3),
+            RichEditor::make('body')->columnSpanFull(),
+            FileUpload::make('featured_image')->image()->directory('posts'),
+            DateTimePicker::make('published_at'),
+            Toggle::make('is_published')->default(true),
         ]);
     }
 
@@ -35,21 +49,21 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('published_at')->dateTime('d.m.Y')->sortable(),
-                Tables\Columns\IconColumn::make('is_published')->boolean(),
+                TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('published_at')->dateTime('d.m.Y')->sortable(),
+                IconColumn::make('is_published')->boolean(),
             ])
             ->defaultSort('published_at', 'desc')
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make()])]);
+            ->recordActions([EditAction::make()])
+            ->toolbarActions([BulkActionGroup::make([DeleteBulkAction::make()])]);
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPosts::route('/'),
-            'create' => Pages\CreatePost::route('/create'),
-            'edit' => Pages\EditPost::route('/{record}/edit'),
+            'index' => ListPosts::route('/'),
+            'create' => CreatePost::route('/create'),
+            'edit' => EditPost::route('/{record}/edit'),
         ];
     }
 }

@@ -2,10 +2,22 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\TeamMemberResource\Pages\ListTeamMembers;
+use App\Filament\Resources\TeamMemberResource\Pages\CreateTeamMember;
+use App\Filament\Resources\TeamMemberResource\Pages\EditTeamMember;
 use App\Filament\Resources\TeamMemberResource\Pages;
 use App\Models\TeamMember;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -13,21 +25,21 @@ use Filament\Tables\Table;
 class TeamMemberResource extends Resource
 {
     protected static ?string $model = TeamMember::class;
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
-    protected static ?string $navigationGroup = 'Inhalte';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user-group';
+    protected static string | \UnitEnum | null $navigationGroup = 'Inhalte';
     protected static ?int $navigationSort = 4;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
-            Forms\Components\TextInput::make('name')->required()->maxLength(255),
-            Forms\Components\TextInput::make('role')->maxLength(255),
-            Forms\Components\TextInput::make('email')->email()->maxLength(255),
-            Forms\Components\TextInput::make('phone')->maxLength(255),
-            Forms\Components\FileUpload::make('photo')->image()->directory('team'),
-            Forms\Components\Textarea::make('bio')->rows(4),
-            Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
-            Forms\Components\Toggle::make('is_published')->default(true),
+        return $schema->components([
+            TextInput::make('name')->required()->maxLength(255),
+            TextInput::make('role')->maxLength(255),
+            TextInput::make('email')->email()->maxLength(255),
+            TextInput::make('phone')->maxLength(255),
+            FileUpload::make('photo')->image()->directory('team'),
+            Textarea::make('bio')->rows(4),
+            TextInput::make('sort_order')->numeric()->default(0),
+            Toggle::make('is_published')->default(true),
         ]);
     }
 
@@ -35,23 +47,23 @@ class TeamMemberResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('role'),
-                Tables\Columns\TextColumn::make('sort_order')->sortable(),
-                Tables\Columns\IconColumn::make('is_published')->boolean(),
+                TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('role'),
+                TextColumn::make('sort_order')->sortable(),
+                IconColumn::make('is_published')->boolean(),
             ])
             ->defaultSort('sort_order')
             ->reorderable('sort_order')
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make()])]);
+            ->recordActions([EditAction::make()])
+            ->toolbarActions([BulkActionGroup::make([DeleteBulkAction::make()])]);
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTeamMembers::route('/'),
-            'create' => Pages\CreateTeamMember::route('/create'),
-            'edit' => Pages\EditTeamMember::route('/{record}/edit'),
+            'index' => ListTeamMembers::route('/'),
+            'create' => CreateTeamMember::route('/create'),
+            'edit' => EditTeamMember::route('/{record}/edit'),
         ];
     }
 }
