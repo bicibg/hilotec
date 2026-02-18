@@ -6,7 +6,7 @@ This guide walks you through setting up the HILOTEC corporate website on a local
 
 Before you begin, make sure the following software is installed:
 
-- [ ] **PHP 8.2+** with these extensions: `pdo_sqlite`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `fileinfo`
+- [ ] **PHP 8.3+** with these extensions: `pdo_sqlite`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `fileinfo`
 - [ ] **Composer 2.x** -- PHP's package manager ([getcomposer.org](https://getcomposer.org))
 - [ ] **Node.js 18+** and **npm** -- for building frontend assets ([nodejs.org](https://nodejs.org))
 - [ ] **SQLite 3** -- the default database for local development
@@ -15,7 +15,7 @@ Before you begin, make sure the following software is installed:
 To verify your versions:
 
 ```bash
-php -v            # Should show 8.2 or higher
+php -v            # Should show 8.3 or higher
 composer -V       # Should show 2.x
 node -v           # Should show v18 or higher
 npm -v            # Any version bundled with Node 18+ is fine
@@ -187,7 +187,7 @@ After completing the setup, confirm everything is functioning:
 
 **Fix (Ubuntu/Debian):**
 ```bash
-sudo apt install php8.2-sqlite3
+sudo apt install php8.3-sqlite3
 sudo phpenmod pdo_sqlite
 ```
 
@@ -202,10 +202,10 @@ After installing, verify with `php -m | grep pdo_sqlite`.
 
 **Fix (Ubuntu/Debian):**
 ```bash
-sudo apt install php8.2-mbstring php8.2-xml php8.2-fileinfo php8.2-curl
+sudo apt install php8.3-mbstring php8.3-xml php8.3-fileinfo php8.3-curl
 ```
 
-Replace `8.2` with your PHP version number.
+Replace `8.3` with your PHP version number.
 
 ### 403 Forbidden on the admin panel after login
 
@@ -262,11 +262,11 @@ chmod 775 database/
 chmod -R 775 storage/ bootstrap/cache/
 ```
 
-### "Your Composer dependencies require a PHP version >= 8.2.0"
+### "Your Composer dependencies require a PHP version >= 8.3.0"
 
-**Cause:** Your system's default PHP version is older than 8.2.
+**Cause:** Your system's default PHP version is older than 8.3.
 
-**Fix:** Install PHP 8.2+ and make sure it is the active version:
+**Fix:** Install PHP 8.3+ and make sure it is the active version:
 
 ```bash
 php -v   # Check current version

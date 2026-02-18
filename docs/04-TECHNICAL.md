@@ -97,7 +97,7 @@ Browser receives HTML + CSS + JS
 
 ### Admin Panel Lifecycle
 
-The admin panel at `/admin` uses **Filament 3**, which adds its own middleware stack and renders its own UI. Filament uses **Livewire** under the hood (a framework for building reactive server-rendered components). You do not need to understand Livewire to use or extend the admin panel -- Filament abstracts it away behind PHP class configuration.
+The admin panel at `/admin` uses **Filament 4**, which adds its own middleware stack and renders its own UI. Filament uses **Livewire** under the hood (a framework for building reactive server-rendered components). You do not need to understand Livewire to use or extend the admin panel -- Filament abstracts it away behind PHP class configuration.
 
 ```
 Browser: /admin/services
@@ -128,9 +128,9 @@ Browser: /admin/services
 
 | Technology | Version | What It Does |
 |---|---|---|
-| **PHP** | ^8.2 | Server-side programming language. Runs all backend code. |
+| **PHP** | ^8.3 | Server-side programming language. Runs all backend code. |
 | **Laravel** | ^12.0 | PHP web framework. Provides routing, database ORM, templating, security, caching, and hundreds of other features out of the box. Think of it as the "operating system" for the web app. |
-| **Filament** | ^3.0 | Admin panel framework built on top of Laravel. Generates a full CRUD (Create/Read/Update/Delete) interface for each content type from a single PHP class. |
+| **Filament** | ^4.0 | Admin panel framework built on top of Laravel. Generates a full CRUD (Create/Read/Update/Delete) interface for each content type from a single PHP class. |
 | **Tailwind CSS** | ^4.0.0 | Utility-first CSS framework. Instead of writing custom CSS, you add classes directly to HTML elements (e.g., `text-white bg-blue-500 p-4`). Version 4 uses a new `@theme` directive for design tokens. |
 | **Alpine.js** | ^3.15.8 | Lightweight JavaScript framework for client-side interactivity. Used for the mobile menu toggle, sticky header scroll detection, and reference category filters. Think of it as "jQuery replacement" but declarative. |
 | **Vite** | ^7.0.7 | Frontend build tool. Compiles Tailwind CSS and bundles JavaScript into optimized, versioned files for production. In development, it provides instant hot-reload. |
@@ -139,7 +139,7 @@ Browser: /admin/services
 | **Composer** | (system) | PHP dependency manager. Reads `composer.json` and installs PHP packages into the `vendor/` directory. Analogous to `apt` or `yum` for PHP libraries. |
 | **npm** | (system) | Node.js dependency manager. Reads `package.json` and installs JavaScript packages into `node_modules/`. Used only at build time -- no Node.js is needed in production. |
 | **Laravel Pint** | ^1.24 (dev) | PHP code style fixer. Automatically formats PHP code to follow Laravel's coding conventions. |
-| **PHPUnit** | ^11.5.3 (dev) | PHP testing framework. Run tests with `php artisan test`. |
+| **PHPUnit** | ^12.0 (dev) | PHP testing framework. Run tests with `php artisan test`. |
 | **@tailwindcss/typography** | ^0.5.19 | Tailwind plugin that adds beautiful typographic defaults for rich-text content (the `prose` class). |
 | **laravel-vite-plugin** | ^2.0.0 | Bridges Vite and Laravel. Handles asset versioning and the `@vite()` Blade directive. |
 

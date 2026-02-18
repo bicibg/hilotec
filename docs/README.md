@@ -4,7 +4,7 @@ This is the complete handover documentation package for the HILOTEC corporate we
 
 **Audience:** HILOTEC Engineering + Consulting AG team (IT infrastructure professionals)
 
-**Project:** Laravel 12 + Filament 3 + Tailwind CSS 4 + Alpine.js corporate website
+**Project:** Laravel 12 + Filament 4 + Tailwind CSS 4 + Alpine.js corporate website
 
 ---
 

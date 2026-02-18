@@ -1,7 +1,7 @@
 # Branch Comparison: master vs. design-v2
 
 > **Date:** 2026-02-17
-> **Repository:** HILOTEC Corporate Website (Laravel 11 + Filament 3 + Tailwind CSS 4)
+> **Repository:** HILOTEC Corporate Website (Laravel 12 + Filament 4 + Tailwind CSS 4)
 > **Audience:** Decision-makers evaluating which branch to deploy or how to merge them.
 
 ---

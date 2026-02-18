@@ -20,9 +20,9 @@ This guide walks you through setting up the HILOTEC website project on your loca
 
 You need five pieces of software installed before you begin. Below are installation instructions for both macOS (Homebrew) and Ubuntu/Debian (apt).
 
-### PHP 8.2+
+### PHP 8.3+
 
-Laravel 12 requires PHP 8.2 or higher. The following PHP extensions are required by the framework and this project specifically:
+Laravel 12 and PHPUnit 12 require PHP 8.3 or higher. The following PHP extensions are required by the framework and this project specifically:
 
 | Extension      | Why It Is Needed                                             |
 |----------------|--------------------------------------------------------------|
@@ -48,13 +48,13 @@ Laravel 12 requires PHP 8.2 or higher. The following PHP extensions are required
 **macOS (Homebrew):**
 
 ```bash
-brew install php@8.2
+brew install php@8.3
 ```
 
 Homebrew's PHP formula ships with most extensions enabled by default. Verify with:
 
 ```bash
-php -v          # Should show 8.2.x or higher
+php -v          # Should show 8.3.x or higher
 php -m          # Lists all loaded extensions
 ```
 
@@ -68,13 +68,13 @@ pecl install <extension-name>
 
 ```bash
 sudo apt update
-sudo apt install -y php8.2 php8.2-cli php8.2-common php8.2-curl \
-    php8.2-mbstring php8.2-xml php8.2-zip php8.2-sqlite3 \
-    php8.2-gd php8.2-intl php8.2-bcmath php8.2-tokenizer \
-    php8.2-fileinfo php8.2-dom
+sudo apt install -y php8.3 php8.3-cli php8.3-common php8.3-curl \
+    php8.3-mbstring php8.3-xml php8.3-zip php8.3-sqlite3 \
+    php8.3-gd php8.3-intl php8.3-bcmath php8.3-tokenizer \
+    php8.3-fileinfo php8.3-dom
 ```
 
-> **Note:** On Ubuntu, you may need to add the `ondrej/php` PPA first if PHP 8.2 is not available in the default repositories:
+> **Note:** On Ubuntu, you may need to add the `ondrej/php` PPA first if PHP 8.3 is not available in the default repositories:
 >
 > ```bash
 > sudo add-apt-repository ppa:ondrej/php

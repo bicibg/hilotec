@@ -7,7 +7,7 @@ Corporate website for [HILOTEC Engineering + Consulting AG](https://www.hilotec.
 | Layer | Technology | Version |
 |-------|-----------|---------|
 | Backend | Laravel | 12 |
-| Admin CMS | Filament | 3 |
+| Admin CMS | Filament | 4 |
 | Styling | Tailwind CSS | 4 |
 | Interactivity | Alpine.js | 3 |
 | Database | SQLite (local) / MySQL (production) | — |
@@ -16,7 +16,7 @@ Corporate website for [HILOTEC Engineering + Consulting AG](https://www.hilotec.
 
 ## Requirements
 
-- PHP 8.2+ with extensions: `pdo_sqlite`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`
+- PHP 8.3+ with extensions: `pdo_sqlite`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`
 - Composer 2.x
 - Node.js 18+ & npm
 - SQLite 3 (included with PHP by default)

@@ -297,7 +297,7 @@ PHP releases a new minor version annually and each version receives 2 years of a
 
 Before upgrading PHP on the server:
 
-1. **Verify Laravel compatibility.** Check `https://laravel.com/docs` for which PHP versions the current Laravel version supports. Laravel 12 requires PHP 8.2+.
+1. **Verify Laravel compatibility.** Check `https://laravel.com/docs` for which PHP versions the current Laravel version supports. Laravel 12 requires PHP 8.2+, but this project requires PHP 8.3+ (due to PHPUnit 12).
 
 2. **Test on a staging environment first.** Install the new PHP version on a test server, deploy the application, and verify everything works.
 
