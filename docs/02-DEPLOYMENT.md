@@ -160,7 +160,7 @@ apt install -y \
     php8.3-sqlite3
 ```
 
-> **Note:** Replace `8.3` with `8.2` or `8.4` throughout this guide if you are targeting a different PHP version. The application requires PHP 8.2 at minimum.
+> **Note:** Replace `8.3` with `8.4` throughout this guide if you are targeting a different PHP version. The application requires PHP 8.3 at minimum.
 
 ### 3.3 Install Composer
 

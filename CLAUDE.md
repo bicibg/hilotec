@@ -7,7 +7,7 @@ Do NOT add "Generated with Claude Code" or "Co-Authored-By: Claude" to commits!
 
 ## Project Overview
 Corporate website for HILOTEC Engineering + Consulting AG, a Swiss IT services company.
-Laravel 11 + Filament 3 + Tailwind CSS 4 + Alpine.js. SQLite for local dev.
+Laravel 12 + Filament 4 + Tailwind CSS 4 + Alpine.js. SQLite for local dev.
 
 ## Quick Start
 ```bash
@@ -27,7 +27,7 @@ Admin panel: http://localhost:8000/admin (admin@hilotec.com / password)
 ## Architecture
 
 ### Stack
-- Backend: Laravel 11, Filament 3 (admin CMS)
+- Backend: Laravel 12, Filament 4 (admin CMS)
 - Frontend: Blade templates + Tailwind CSS 4 + Alpine.js
 - Database: SQLite (local), easily switchable to MySQL/PostgreSQL
 - Fonts: Google Fonts — Sora (headings), DM Sans (body)

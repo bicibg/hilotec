@@ -1179,7 +1179,7 @@ Print this section and keep it with your server documentation.
 
 ```
 [ ] 1. Provision fresh server (Ubuntu 22.04/24.04)
-[ ] 2. Install PHP 8.2+, Composer, Nginx/Apache, MySQL/PostgreSQL
+[ ] 2. Install PHP 8.3+, Composer, Nginx/Apache, MySQL/PostgreSQL
 [ ] 3. Clone git repository to /var/www/hilotec
 [ ] 4. Run: composer install --no-dev --optimize-autoloader
 [ ] 5. Restore .env from backup
