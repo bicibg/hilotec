@@ -30,6 +30,7 @@
                         src="{{ asset('images/branding/teamviewer_badge.png') }}"
                         alt="TeamViewer"
                         class="h-10 w-auto"
+                        loading="lazy"
                     >
                 </a>
             </div>

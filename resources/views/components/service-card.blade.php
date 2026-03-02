@@ -18,6 +18,7 @@
                     src="{{ asset('images/icons/' . $service->icon) }}"
                     alt=""
                     class="w-7 h-7"
+                    loading="lazy"
                 >
             </div>
         </div>

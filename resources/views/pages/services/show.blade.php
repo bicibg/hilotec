@@ -1,4 +1,20 @@
 <x-layout title="{{ $service->title }}" metaDescription="{{ $service->excerpt }}">
+    @push('head')
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "{{ $service->title }}",
+        "description": "{{ $service->excerpt }}",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "{{ setting('general.company_name') }}"
+        },
+        "url": "{{ url()->current() }}"
+    }
+    </script>
+    @endpush
+
     <x-hero
         heading="{{ $service->title }}"
         image="heroes/inner_page_hero_bg.jpg"
@@ -11,7 +27,7 @@
                 <div class="lg:col-span-3 reveal">
                     @if($service->icon)
                         <div class="w-16 h-16 rounded-xl bg-amber-50 flex items-center justify-center mb-6">
-                            <img src="{{ asset('images/icons/' . $service->icon) }}" alt="" class="w-10 h-10">
+                            <img src="{{ asset('images/icons/' . $service->icon) }}" alt="" class="w-10 h-10" loading="lazy">
                         </div>
                     @endif
 
