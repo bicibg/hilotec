@@ -21,24 +21,68 @@
         <meta name="description" content="{{ $metaDescription }}">
     @endif
 
+    <link rel="canonical" href="{{ url()->current() }}">
+
     <meta property="og:title" content="{{ $title ?? setting('general.company_name') }}">
     @if($metaDescription)
         <meta property="og:description" content="{{ $metaDescription }}">
     @endif
     <meta property="og:image" content="{{ asset($metaImage ?? 'images/meta/og_image.jpg') }}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:site_name" content="{{ setting('general.company_name') }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title ?? setting('general.company_name') }}">
+    @if($metaDescription)
+        <meta name="twitter:description" content="{{ $metaDescription }}">
+    @endif
+    <meta name="twitter:image" content="{{ asset($metaImage ?? 'images/meta/og_image.jpg') }}">
 
     {{-- Favicons --}}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/meta/favicon-32x32.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/meta/apple-touch-icon.png') }}">
 
-    {{-- Google Fonts --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {{-- Font preloads --}}
+    <link rel="preload" href="{{ asset('fonts/sora/sora-v17-latin-regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/sora/sora-v17-latin-700.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/dm-sans/dm-sans-v17-latin-regular.woff2') }}" as="font" type="font/woff2" crossorigin>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- Structured Data: LocalBusiness --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "{{ setting('general.company_name') }}",
+        "description": "{{ $metaDescription ?? 'IT-Dienstleistungen für KMU im Emmental' }}",
+        "url": "{{ url('/') }}",
+        "logo": "{{ asset('images/branding/logo.png') }}",
+        "image": "{{ asset('images/meta/og_image.jpg') }}",
+        "telephone": "{{ setting('contact.phone_support_infra') }}",
+        "email": "{{ setting('contact.email') }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ setting('contact.address_line1') }}",
+            "addressLocality": "Langnau i.E.",
+            "postalCode": "3550",
+            "addressRegion": "BE",
+            "addressCountry": "CH"
+        },
+        "openingHours": "{{ setting('contact.business_hours') }}",
+        "sameAs": [
+            @if(setting('social.linkedin'))"{{ setting('social.linkedin') }}"@endif
+            @if(setting('social.linkedin') && setting('social.github')),@endif
+            @if(setting('social.github'))"{{ setting('social.github') }}"@endif
+        ],
+        "priceRange": "$$"
+    }
+    </script>
+
+    @stack('head')
 </head>
 <body class="min-h-screen flex flex-col">
     <x-header />

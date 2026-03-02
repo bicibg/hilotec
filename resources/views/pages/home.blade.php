@@ -1,4 +1,7 @@
-<x-layout>
+<x-layout
+    title="IT-Dienstleistungen für KMU"
+    metaDescription="HILOTEC Engineering + Consulting AG, Ihr IT-Partner im Emmental. Infrastruktur, Cloud, Sicherheit, Software und VoIP für KMU."
+>
     {{-- Hero Section --}}
     <x-hero
         heading="{{ setting('general.company_slogan') }}"
@@ -89,6 +92,7 @@
                                 src="{{ asset('images/heroes/ueber_uns_hero_bg.jpg') }}"
                                 alt="Emmental Landschaft"
                                 class="w-full h-full object-cover"
+                                loading="lazy"
                             >
                         </div>
                         {{-- Decorative accent --}}

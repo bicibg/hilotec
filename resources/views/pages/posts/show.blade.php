@@ -1,4 +1,36 @@
-<x-layout title="{{ $post->title }}" metaDescription="{{ $post->excerpt }}">
+<x-layout
+    title="{{ $post->title }}"
+    metaDescription="{{ $post->excerpt }}"
+    metaImage="{{ $post->featured_image ? 'storage/' . $post->featured_image : null }}"
+>
+    @push('head')
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ $post->title }}",
+        "description": "{{ $post->excerpt }}",
+        "datePublished": "{{ $post->published_at?->toIso8601String() }}",
+        "dateModified": "{{ $post->updated_at->toIso8601String() }}",
+        "author": {
+            "@type": "Organization",
+            "name": "{{ setting('general.company_name') }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ setting('general.company_name') }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ asset('images/branding/logo.png') }}"
+            }
+        }
+        @if($post->featured_image)
+        ,"image": "{{ asset('storage/' . $post->featured_image) }}"
+        @endif
+    }
+    </script>
+    @endpush
+
     <x-hero
         heading="{{ $post->title }}"
         image="heroes/inner_page_hero_bg.jpg"

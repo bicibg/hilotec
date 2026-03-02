@@ -1,2 +1,17 @@
+# HILOTEC Engineering + Consulting AG
+# https://hilotec.com
+
 User-agent: *
-Disallow:
+Allow: /
+
+# Block admin panel
+Disallow: /admin
+Disallow: /livewire
+
+# Block Laravel internal routes
+Disallow: /sanctum
+Disallow: /storage/
+Disallow: /_debugbar
+
+# Sitemap location
+Sitemap: https://hilotec.com/sitemap.xml

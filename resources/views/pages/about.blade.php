@@ -32,7 +32,7 @@
                         <div class="reveal bg-white rounded-xl p-6 card-elevated text-center">
                             @if($member->photo)
                                 <div class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 ring-2 ring-hilotec-gold/20 ring-offset-2">
-                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover" loading="lazy">
                                 </div>
                             @else
                                 <div class="w-24 h-24 rounded-full bg-hilotec-light-alt mx-auto mb-4 flex items-center justify-center ring-2 ring-hilotec-gold/20 ring-offset-2">
