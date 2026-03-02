@@ -12,7 +12,7 @@
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto reveal">
                 <div class="prose prose-lg prose-light max-w-none">
-                    {!! $page->body !!}
+                    {!! clean($page->body) !!}
                 </div>
             </div>
         </div>

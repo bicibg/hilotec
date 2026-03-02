@@ -32,7 +32,7 @@
                     @endif
 
                     <div class="prose prose-lg prose-light max-w-none">
-                        {!! $service->body !!}
+                        {!! clean($service->body) !!}
                     </div>
 
                     <div class="mt-10">

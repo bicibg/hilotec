@@ -10,6 +10,11 @@ class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->isProduction()) {
+            $this->command?->warn('Skipping AdminUserSeeder in production environment.');
+            return;
+        }
+
         User::updateOrCreate(
             ['email' => 'admin@hilotec.com'],
             [

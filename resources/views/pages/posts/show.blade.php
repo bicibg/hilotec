@@ -52,7 +52,7 @@
                 @endif
 
                 <div class="prose prose-lg prose-light max-w-none">
-                    {!! $post->body !!}
+                    {!! clean($post->body) !!}
                 </div>
 
                 <div class="mt-12 pt-8 border-t border-hilotec-border">
