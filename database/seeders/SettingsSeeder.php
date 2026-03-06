@@ -24,10 +24,12 @@ class SettingsSeeder extends Seeder
             ['group' => 'contact', 'key' => 'phone_support_infra', 'value' => '+41 34 408 01 00'],
             ['group' => 'contact', 'key' => 'phone_label_infra', 'value' => 'Support IT-Infrastruktur'],
             ['group' => 'contact', 'key' => 'phone_support_software', 'value' => '+41 34 408 01 01'],
-            ['group' => 'contact', 'key' => 'phone_label_software', 'value' => 'Support Chronikos, M-Soft und Sage50'],
+            ['group' => 'contact', 'key' => 'phone_label_software', 'value' => 'Support für Chronikos, MSoft und Sage50'],
             ['group' => 'contact', 'key' => 'email', 'value' => 'info@hilotec.com'],
             ['group' => 'contact', 'key' => 'website', 'value' => 'https://www.hilotec.com'],
             ['group' => 'contact', 'key' => 'business_hours', 'value' => 'Mo-Fr, 08:00-12:00 und 13:30-18:00'],
+            ['group' => 'contact', 'key' => 'email_jobs', 'value' => 'jobs@hilotec.com'],
+            ['group' => 'contact', 'key' => 'after_hours_note', 'value' => 'Wartung/Service auch ausserhalb der Bürozeiten und am Wochenende'],
 
             // Footer
             ['group' => 'footer', 'key' => 'cta_heading', 'value' => 'Sie haben ein Problem oder eine Frage? Wir bieten Ihnen die Lösung, die Sie suchen.'],
@@ -36,6 +38,7 @@ class SettingsSeeder extends Seeder
             ['group' => 'footer', 'key' => 'copyright_text', 'value' => '© Copyright 2025, HILOTEC Engineering + Consulting AG'],
             ['group' => 'footer', 'key' => 'teamviewer_text', 'value' => 'Klicken Sie hier um den TeamViewer Tool zu starten'],
             ['group' => 'footer', 'key' => 'teamviewer_url', 'value' => 'https://get.teamviewer.com/hilotec'],
+            ['group' => 'footer', 'key' => 'teamviewer_url_host', 'value' => 'https://get.teamviewer.com/hilotec-host'],
 
             // Social
             ['group' => 'social', 'key' => 'linkedin', 'value' => 'https://www.linkedin.com/company/hilotec-engineering-consulting-ag'],

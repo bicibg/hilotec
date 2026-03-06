@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             ReferencesSeeder::class,
             PagesSeeder::class,
             PostsSeeder::class,
+            TeamMembersSeeder::class,
+            PartnersSeeder::class,
         ]);
     }
 }

@@ -33,6 +33,13 @@ class PartnerResource extends Resource
     {
         return $schema->components([
             TextInput::make('name')->required()->maxLength(255),
+            Forms\Components\Select::make('type')
+                ->options([
+                    'technology' => 'Technology Partner',
+                    'local' => 'Local Partner',
+                ])
+                ->default('technology')
+                ->required(),
             FileUpload::make('logo')->image()->directory('partners'),
             TextInput::make('website')->maxLength(255),
             Textarea::make('description')->rows(3),
@@ -46,6 +53,12 @@ class PartnerResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('type')->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'local' => 'info',
+                        'technology' => 'success',
+                        default => 'gray',
+                    }),
                 TextColumn::make('website'),
                 TextColumn::make('sort_order')->sortable(),
                 IconColumn::make('is_published')->boolean(),
