@@ -55,7 +55,7 @@
     {{-- Structured Data: LocalBusiness --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
+        "@@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "{{ setting('general.company_name') }}",
         "description": "{{ $metaDescription ?? 'IT-Dienstleistungen für KMU im Emmental' }}",
